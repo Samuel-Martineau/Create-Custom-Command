@@ -101,6 +101,7 @@ async function main() {
           `cd ${dirPath} && npm install colors && chmod +x index.js && sudo ln -s ${dirPath}index.js /usr/bin/${name}`
         );
         console.log(`La commande ${name} a été créée`.green);
+        if (nano) exec(`nano ${dirPath}index.js`);
       } catch {
         console.log("Une erreur est survenue".red);
       }
@@ -110,9 +111,12 @@ async function main() {
       try {
         const dirPath = `/home/${user}/custom-commands/`;
         mkdirp.sync(dirPath);
-        fs.writeFileSync(dirPath + name, "# " + desc);
-        exec(`cd ${dirPath} && sudo ln -s ${dirPath}${name} /usr/bin/${name}`);
+        fs.writeFileSync(dirPath + name, "# " + desc + " par " + author);
+        exec(
+          `cd ${dirPath} && chmod +x ${name} && sudo ln -s ${dirPath}${name} /usr/bin/${name}`
+        );
         console.log(`La commande ${name} a été créée`.green);
+        if (nano) exec(`nano ${dirPath}${name}`);
       } catch {
         console.log("Une erreur est survenue".red);
       }

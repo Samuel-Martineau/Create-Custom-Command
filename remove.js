@@ -20,7 +20,7 @@ async function main() {
       type: "list",
       name: "cmdToDelete",
       message: "Quelle commande voulez-vous spprimer ?",
-      choices: fs.readdirSync(dirPath)
+      choices: fs.readdirSync(dirPath).map(f => ({ value: f, name: f }))
     }
   ]);
   exec(`rm -r ${dirPath}${cmd} && sudo rm /usr/bin/${cmd}`);
