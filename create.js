@@ -110,7 +110,7 @@ async function main() {
       try {
         const dirPath = `/home/${user}/custom-commands/`;
         mkdirp.sync(dirPath);
-        fs.writeFileSync(dirPath + name);
+        fs.writeFileSync(dirPath + name, "# " + desc);
         exec(`cd ${dirPath} && sudo ln -s ${dirPath}${name} /usr/bin/${name}`);
         console.log(`La commande ${name} a été créée`.green);
       } catch {
