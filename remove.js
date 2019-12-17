@@ -15,12 +15,12 @@ main();
 
 async function main() {
   const dirPath = "/home/" + user + "/custom-commands/";
-  const { cmdToDelte: cmd } = await inquirer.prompt([
+  const { cmdToDelete: cmd } = await inquirer.prompt([
     {
       type: "list",
       name: "cmdToDelete",
       message: "Quelle commande voulez-vous spprimer ?",
-      choices: fs.readdirSync(dirPath).map(f => ({ value: f, name: f }))
+      choices: fs.readdirSync(dirPath)
     }
   ]);
   exec(`rm -r ${dirPath}${cmd} && sudo rm /usr/bin/${cmd}`);

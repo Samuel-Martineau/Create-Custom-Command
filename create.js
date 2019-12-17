@@ -19,7 +19,6 @@ async function main() {
     cmdName: name,
     cmdDesc: desc,
     cmdLanguage: lang,
-    openNano: nano,
     authorName: author
   } = await inquirer.prompt([
     {
@@ -72,11 +71,6 @@ async function main() {
           value: "bash"
         }
       ]
-    },
-    {
-      type: "confirm",
-      name: "openNano",
-      message: "Voulez ouvrir la commande dans nano ?"
     }
   ]);
 
@@ -101,7 +95,6 @@ async function main() {
           `cd ${dirPath} && npm install colors && chmod +x index.js && sudo ln -s ${dirPath}index.js /usr/bin/${name}`
         );
         console.log(`La commande ${name} a été créée`.green);
-        if (nano) exec(`nano ${dirPath}index.js`);
       } catch {
         console.log("Une erreur est survenue".red);
       }
@@ -116,7 +109,6 @@ async function main() {
           `cd ${dirPath} && chmod +x ${name} && sudo ln -s ${dirPath}${name} /usr/bin/${name}`
         );
         console.log(`La commande ${name} a été créée`.green);
-        if (nano) exec(`nano ${dirPath}${name}`);
       } catch {
         console.log("Une erreur est survenue".red);
       }
