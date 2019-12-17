@@ -1,0 +1,11 @@
+{
+  "name": "create-custom-command",
+  "version": "1.0.0",
+  "description": "Un CLI pour créer CLI",
+  "author": "Samuel Martineau",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Samuel-Martineau/Create-Custom-Command.git"
+  }
+}
