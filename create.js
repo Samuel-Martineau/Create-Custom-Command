@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const exec = require("child_process").execSync;
 const inquirer = require("inquirer");
 const mkdirp = require("mkdirp");
