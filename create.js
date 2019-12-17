@@ -78,7 +78,7 @@ async function main() {
     case "js":
       console.log("Création de la commande...".green);
       try {
-        const indexJS = "!#/usr/bin/node\nrequire('colors')\n";
+        const indexJS = "!#/usr/bin/node\nrequire('colors');\n";
         const packageJSON = {
           name: name,
           version: "1.0.0",
@@ -90,7 +90,7 @@ async function main() {
         const dirPath = `/home/${user}/custom-commands/${name}/`;
         mkdirp.sync(dirPath);
         fs.writeFileSync(dirPath + "index.js", indexJS);
-        fs.writeFileSync(dirPath + "package.json", packageJSON);
+        fs.writeFileSync(dirPath + "package.json", JSON.stringify(packageJSON));
         exec(
           `cd ${dirPath} && npm install colors && chmod +x index.js && sudo ln -s ${dirPath}index.js /usr/bin/${name}`
         );
