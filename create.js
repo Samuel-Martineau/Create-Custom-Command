@@ -78,7 +78,7 @@ async function main() {
     case "js":
       console.log("Création de la commande...".green);
       try {
-        const indexJS = "!#/usr/bin/node\nrequire('colors');\n";
+        const indexJS = "#!/usr/bin/node\nrequire('colors');\n";
         const packageJSON = {
           name: name,
           version: "1.0.0",
