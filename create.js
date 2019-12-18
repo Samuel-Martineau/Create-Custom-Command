@@ -11,7 +11,14 @@ require("colors");
 const config = new Configstore(packageJson.name);
 
 if (!(config.has("language") || config.has("authorName"))) {
-  exec("config-cccmd");
+  console.log(
+    "Vous devez configurer ce paquet avant de l'utiliser. Exécutez ".red +
+      "config-cccmd".white
+  );
+  console.log(
+    "You must configure this package before using it. Execute ".red +
+      "config-cccmd".white
+  );
   return;
 }
 
@@ -114,9 +121,9 @@ async function main() {
       }
       break;
   }
-}
 
-const notifier = updateNotifier({ pkg: packageJson });
-if (notifier.update) {
-  console.log(getMessage("updateAvailable").green.bold);
+  const notifier = updateNotifier({ pkg: packageJson });
+  if (notifier.update) {
+    console.log(getMessage("updateAvailable").green.bold);
+  }
 }

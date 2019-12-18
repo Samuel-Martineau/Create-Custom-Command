@@ -9,8 +9,17 @@ require("colors");
 
 const config = new Configstore(packageJson.name);
 
+console.log();
+
 if (!(config.has("language") || config.has("authorName"))) {
-  exec("config-cccmd");
+  console.log(
+    "Vous devez configurer ce paquet avant de l'utiliser. Exécutez ".red +
+      "config-cccmd".white
+  );
+  console.log(
+    "You must configure this package before using it. Execute ".red +
+      "config-cccmd".white
+  );
   return;
 }
 
@@ -18,7 +27,6 @@ const user = exec("whoami")
   .toString()
   .trim();
 
-console.log();
 console.log(getMessage("welcomeRemove").blue);
 
 main();
@@ -49,9 +57,9 @@ async function main() {
   if (!confirm) return console.log(getMessage("deletionAborted").red);
   exec(`rm -r ${dirPath}${cmd} && sudo rm /usr/bin/${cmd}`);
   console.log(getMessage("deletionCompleted").replace("NAME", cmd).green);
-}
 
-const notifier = updateNotifier({ pkg: packageJson });
-if (notifier.update) {
-  console.log(getMessage("updateAvailable").green.bold);
+  const notifier = updateNotifier({ pkg: packageJson });
+  if (notifier.update) {
+    console.log(getMessage("updateAvailable").green.bold);
+  }
 }
