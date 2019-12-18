@@ -7,6 +7,7 @@ const config = new Configstore(packageJson.name);
 
 module.exports = {
   getMessage(key) {
+    console.log(messages);
     return messages[key][config.get("language")];
   }
 };
