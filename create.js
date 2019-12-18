@@ -1,66 +1,65 @@
 #!/usr/bin/node
 const exec = require("child_process").execSync;
+const packageJson = require("./package.json");
+const { getMessage } = require("./helpers");
+const Configstore = require("configstore");
 const inquirer = require("inquirer");
 const mkdirp = require("mkdirp");
 const fs = require("fs");
 require("colors");
+
+const config = new Configstore(packageJson.name);
 
 const user = exec("whoami")
   .toString()
   .trim();
 
 console.log();
-console.log("Bienvenue dans l'interface de création de commandes".blue);
+console.log(getMessage("welcomeCreate").blue);
 
 main();
 
 async function main() {
+  if (!(config.has("language") || config.has("authorName"))) {
+    config.exec("config-ccmd");
+    return;
+  }
   const {
     cmdName: name,
     cmdDesc: desc,
-    cmdLanguage: lang,
-    authorName: author
+    cmdLanguage: lang
   } = await inquirer.prompt([
     {
       type: "input",
       name: "cmdName",
-      message: "Quel est le nom de la commande que vous voulez créer ?",
+      message: getMessage("cmdName"),
       validate(val) {
-        if (val === "") return "Veuillez entrer un nom";
-        else if (val.includes(" ")) return "Le nom ne peut contenir d'espaces";
-        else if (val.includes("/"))
-          return "Le nom ne peut contenir de barres obliques";
+        if (val === "") return getMessage("emptyCmdName");
+        else if (val.includes(" ")) return getMessage("cmdNameWithSpace");
+        else if (/[!@#$%^&*(),.?":{}|<>/]/.test(val))
+          return getMessage("cmdNameWithSymbols");
         else if (
           fs.existsSync("/usr/bin/" + val) ||
           fs.existsSync("/bin/" + val) ||
           fs.existsSync("/home/" + user + "/custom-commands/" + val)
         )
-          return "Cette commande existe déjà";
+          return getMessage("cmdAlreadyExists");
         else return true;
       }
     },
     {
       type: "input",
       name: "cmdDesc",
-      message: "Quelle est la description de votre commande ?",
+      message: getMessage("cmdDesc"),
       validate(val) {
-        if (val === "") return "Veuillez entrer une description";
-        else return true;
-      }
-    },
-    {
-      type: "input",
-      name: "authorName",
-      message: "Quelle est votre nom ?",
-      validate(val) {
-        if (val === "") return "Veuillez entrer votre nom";
+        if (val === "") return getMessage("emptyCmdDesc");
         else return true;
       }
     },
     {
       type: "list",
       name: "cmdLanguage",
-      message: "Dans quel language voulez-vous coder votre commande ?",
+      message: getMessage("cmdLanguage"),
       choices: [
         {
           name: "JS",
@@ -76,7 +75,7 @@ async function main() {
 
   switch (lang) {
     case "js":
-      console.log("Création de la commande...".green);
+      console.log(getMessage("creatingCommand").green);
       try {
         const indexJS = "#!/usr/bin/node\nrequire('colors');\n";
         const packageJSON = {
@@ -94,13 +93,13 @@ async function main() {
         exec(
           `cd ${dirPath} && npm install colors && chmod +x index.js && sudo ln -s ${dirPath}index.js /usr/bin/${name}`
         );
-        console.log(`La commande ${name} a été créée`.green);
+        console.log(getMessage("cmdCreated").replace("NAME", name).green);
       } catch {
-        console.log("Une erreur est survenue".red);
+        console.log(getMessage("cmdError").red);
       }
       break;
     case "bash":
-      console.log("Création de la commande...".green);
+      console.log(getMessage("creatingCommand").green);
       try {
         const dirPath = `/home/${user}/custom-commands/`;
         mkdirp.sync(dirPath);
@@ -108,10 +107,15 @@ async function main() {
         exec(
           `cd ${dirPath} && chmod +x ${name} && sudo ln -s ${dirPath}${name} /usr/bin/${name}`
         );
-        console.log(`La commande ${name} a été créée`.green);
+        console.log(getMessage("cmdCreated").replace("NAME", name).green);
       } catch {
-        console.log("Une erreur est survenue".red);
+        console.log(getMessage("cmdError").red);
       }
       break;
   }
+}
+
+const notifier = updateNotifier({ pkg: packageJson });
+if (notifier.update) {
+  console.log(getMessage("updateAvailable").green.bold);
 }

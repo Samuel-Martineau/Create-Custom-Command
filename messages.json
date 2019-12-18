@@ -1,0 +1,94 @@
+{
+  "authorName": {
+    "fr": "Quel est votre nom ?",
+    "en": "What's your name ?"
+  },
+  "emptyAuthorName": {
+    "fr": "Veuillez entrer votre nom",
+    "en": "Please enter your name"
+  },
+  "welcomeConfigure": {
+    "fr": "Bienvenue dans l'interface de configuration de Create-Custom-Command",
+    "en": "Welcome in the configuration interface of Create-Custom-Command"
+  },
+  "configureSuccess": {
+    "fr": "La nouvelle configuration a été sauvegardée avec succès",
+    "en": "The new configuration has been saved"
+  },
+  "updateAvailable": {
+    "fr": "Une nouvelle version de ce CLI est disponible !",
+    "en": "A new version of this CLI is available !"
+  },
+  "welcomeRemove": {
+    "fr": "Bienvenue dans l'interface de suppresion de commandes",
+    "en": "Welcome in the command deletion interface"
+  },
+  "noExistingCommands": {
+    "fr": "Vous n'avez créé aucune commande",
+    "en": "There are no commands created"
+  },
+  "wichCommandToDelete": {
+    "fr": "Quelle commande voulez-vous spprimer ?",
+    "en": "Wich command do you want to delete ?"
+  },
+  "confirmDeletion": {
+    "fr": "Êtes-vous sûr de vouloir supprimer cette commande ?",
+    "en": "Are-you sure you want delete this command ?"
+  },
+  "deletionAborted": {
+    "fr": "Vous avez aborté la suppression",
+    "en": "You aborted the command deletion"
+  },
+  "deletionCompleted": {
+    "fr": "La commande NAME a été supprimée avec succès",
+    "en": "The command NAME has been deleted"
+  },
+  "welcomeCreate": {
+    "fr": "Bienvenue dans l'interface de création de commandes",
+    "en": "Welcome in command creation interface"
+  },
+  "cmdName": {
+    "fr": "Quel est le nom de la commande que vous voulez créer ?",
+    "en": "What's the name of the command that you want to create ?"
+  },
+  "emptyCmdName": {
+    "fr": "Veuillez entrer un nom",
+    "en": "Please enter a name"
+  },
+  "cmdNameWithSpace": {
+    "fr": "Le nom ne peut contenir d'espaces",
+    "en": "The name may not contain spaces"
+  },
+  "cmdNameWithSymbols": {
+    "fr": "Le nom ne peut contenir de charactères spéciaux",
+    "en": "The name may not contain special characters"
+  },
+  "cmdAlreadyExists": {
+    "fr": "Cette commande existe déjà",
+    "en": "This command already exists"
+  },
+  "cmdDesc": {
+    "fr": "Quelle est la description de votre commande ?",
+    "en": "What's the description of your command ?"
+  },
+  "emptyCmdDesc": {
+    "fr": "Veuillez entrer une description",
+    "en": "Please enter a description"
+  },
+  "cmdLanguage": {
+    "fr": "Dans quel language voulez-vous coder votre commande ?",
+    "en": "In wich language do you want to code your command ?"
+  },
+  "creatingCommand": {
+    "fr": "Création de la commande...",
+    "en": "Creating command..."
+  },
+  "cmdCreated": {
+    "fr": "La commande NAME a été créée",
+    "en": "The command NAME has been created"
+  },
+  "cmdError": {
+    "fr": "Une erreur est survenue",
+    "en": "An error occured"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "create-custom-command",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "description": "Un CLI pour créer CLI",
   "author": "Samuel Martineau",
   "license": "ISC",
@@ -10,23 +10,21 @@
   },
   "dependencies": {
     "colors": "^1.4.0",
+    "configstore": "^5.0.0",
     "inquirer": "^7.0.1",
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "update-notifier": "^4.0.0"
   },
   "bin": {
     "mk-cmd": "./create.js",
-    "rm-cmd": "./remove.js"
+    "rm-cmd": "./remove.js",
+    "config-cccmd": "./configure.js"
   },
   "bugs": {
     "url": "https://github.com/Samuel-Martineau/Create-Custom-Command/issues"
   },
   "homepage": "https://github.com/Samuel-Martineau/Create-Custom-Command#readme",
-  "main": "create.js",
-  "directories": {
-    "test": "test"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "./postinstall.js"
   }
 }

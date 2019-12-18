@@ -1,5 +1,8 @@
 #!/usr/bin/node
 const exec = require("child_process").execSync;
+const packageJson = require("./package.json");
+const { getMessage } = require("./helpers");
+const Configstore = require("configstore");
 const inquirer = require("inquirer");
 const fs = require("fs");
 require("colors");
@@ -9,19 +12,39 @@ const user = exec("whoami")
   .trim();
 
 console.log();
-console.log("Bienvenue dans l'interface de suppresion de commandes".blue);
+console.log(getMessage("welcomeRemove").blue);
 
 main();
 
 async function main() {
   const dirPath = "/home/" + user + "/custom-commands/";
-  const { cmdToDelete: cmd } = await inquirer.prompt([
+  let choices;
+  try {
+    choices = fs.readdirSync(dirPath);
+    if (choices.length === 0) throw new Error();
+  } catch {
+    console.log(getMessage("noExistingCommands").red);
+    process.exit();
+  }
+  const { cmdToDelete: cmd, confirm } = await inquirer.prompt([
     {
       type: "list",
       name: "cmdToDelete",
-      message: "Quelle commande voulez-vous spprimer ?",
-      choices: fs.readdirSync(dirPath)
+      message: getMessage("wichCommandToDelete"),
+      choices
+    },
+    {
+      type: "confirm",
+      name: "confirm",
+      message: getMessage("confirmDeletion")
     }
   ]);
+  if (!confirm) return console.log(getMessage("deletionAborted").red);
   exec(`rm -r ${dirPath}${cmd} && sudo rm /usr/bin/${cmd}`);
+  console.log(getMessage("deletionCompleted").replace("NAME", cmd).green);
+}
+
+const notifier = updateNotifier({ pkg: packageJson });
+if (notifier.update) {
+  console.log(getMessage("updateAvailable").green.bold);
 }
