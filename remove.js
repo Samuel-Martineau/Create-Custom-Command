@@ -7,8 +7,10 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 require("colors");
 
+const config = new Configstore(packageJson.name);
+
 if (!(config.has("language") || config.has("authorName"))) {
-  exec("config-ccmd");
+  exec("config-cccmd");
   return;
 }
 

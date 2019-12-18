@@ -10,10 +10,8 @@ require("colors");
 
 const config = new Configstore(packageJson.name);
 
-console.log(config.has("language"), config.has("authorName"));
-
 if (!(config.has("language") || config.has("authorName"))) {
-  exec("config-ccmd");
+  exec("config-cccmd");
   return;
 }
 
