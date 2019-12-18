@@ -9,8 +9,6 @@ require("colors");
 
 const config = new Configstore(packageJson.name);
 
-console.log();
-
 if (!(config.has("language") || config.has("authorName"))) {
   console.log(
     "Vous devez configurer ce paquet avant de l'utiliser. Exécutez ".red +
@@ -27,6 +25,7 @@ const user = exec("whoami")
   .toString()
   .trim();
 
+console.log();
 console.log(getMessage("welcomeRemove").blue);
 
 main();

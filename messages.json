@@ -90,5 +90,9 @@
   "cmdError": {
     "fr": "Une erreur est survenue",
     "en": "An error occured"
+  },
+  "by": {
+    "fr": "par",
+    "en": "by"
   }
 }

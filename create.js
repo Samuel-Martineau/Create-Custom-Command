@@ -111,7 +111,10 @@ async function main() {
       try {
         const dirPath = `/home/${user}/custom-commands/`;
         mkdirp.sync(dirPath);
-        fs.writeFileSync(dirPath + name, "# " + desc + " par " + author);
+        fs.writeFileSync(
+          dirPath + name,
+          `# ${cmd} (${desc}) ${getMessage("by")} ${author}`
+        );
         exec(
           `cd ${dirPath} && chmod +x ${name} && sudo ln -s ${dirPath}${name} /usr/bin/${name}`
         );
