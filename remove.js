@@ -7,6 +7,11 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 require("colors");
 
+if (!(config.has("language") || config.has("authorName"))) {
+  config.exec("config-ccmd");
+  return;
+}
+
 const user = exec("whoami")
   .toString()
   .trim();
