@@ -8,7 +8,7 @@ const fs = require("fs");
 require("colors");
 
 if (!(config.has("language") || config.has("authorName"))) {
-  config.exec("config-ccmd");
+  exec("config-ccmd");
   return;
 }
 
