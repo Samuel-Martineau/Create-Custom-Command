@@ -57,7 +57,10 @@ async function main() {
   exec(`rm -r ${dirPath}${cmd} && sudo rm /usr/bin/${cmd}`);
   console.log(getMessage("deletionCompleted").replace("NAME", cmd).green);
 
-  const notifier = updateNotifier({ pkg: packageJson });
+  const notifier = updateNotifier({
+    pkg: packageJson,
+    updateCheckInterval: 1000 * 60 * 24
+  });
   if (notifier.update) {
     console.log(getMessage("updateAvailable").green.bold);
   }

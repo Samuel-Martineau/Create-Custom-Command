@@ -1,7 +1,6 @@
 #!/usr/bin/node
 require("colors");
 
-console.log();
 console.log(
   "Vous pouvez configurer ce paquet avec la commande ".blue +
     "config-cccmd".white

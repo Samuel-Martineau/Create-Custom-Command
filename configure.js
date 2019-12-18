@@ -57,7 +57,10 @@ function main() {
         });
     });
 
-  const notifier = updateNotifier({ pkg: packageJson });
+  const notifier = updateNotifier({
+    pkg: packageJson,
+    updateCheckInterval: 1000 * 60 * 24
+  });
   if (notifier.update) {
     console.log(getMessage("updateAvailable").green.bold);
   }
