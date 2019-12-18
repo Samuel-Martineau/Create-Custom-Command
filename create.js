@@ -10,6 +10,11 @@ require("colors");
 
 const config = new Configstore(packageJson.name);
 
+if (!(config.has("language") || config.has("authorName"))) {
+  config.exec("config-ccmd");
+  return;
+}
+
 const user = exec("whoami")
   .toString()
   .trim();
@@ -20,10 +25,6 @@ console.log(getMessage("welcomeCreate").blue);
 main();
 
 async function main() {
-  if (!(config.has("language") || config.has("authorName"))) {
-    config.exec("config-ccmd");
-    return;
-  }
   const {
     cmdName: name,
     cmdDesc: desc,
