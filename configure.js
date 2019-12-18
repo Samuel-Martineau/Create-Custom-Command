@@ -9,7 +9,10 @@ require("colors");
 const config = new Configstore(packageJson.name);
 
 console.log();
-console.log(getMessage("welcomeConfigure").blue);
+console.log(
+  "Bienvenue dans l'interface de configuration de Create-Custom-Command / Welcome in the configuration interface of Create-Custom-Command"
+    .blue
+);
 
 inquirer
   .prompt([
