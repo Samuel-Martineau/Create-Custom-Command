@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/Samuel-Martineau/Create-Custom-Command#readme",
   "scripts": {
-    "postinstall": "./postinstall.js"
+    "postinstall": "node ./postinstall.js"
   }
 }
