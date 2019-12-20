@@ -11,14 +11,14 @@
 
 ## Configuration
 
-> The programm will prompt you for your _name_ et your prefered language (_English_ / _French_)
+> The program will prompt you for your _name_ et your prefered language (_English_ / _French_)
 
 `config-cccmd`
 
 ## Utilisation
 
 > **To create a command**  
-> The programm will prompt you for the command's _name_, it's _description_ and the programming _language_ in wich you want to code it (_BASH / ZSH_ ou _JS_)
+> The program will prompt you for the command's _name_, it's _description_ and the programming _language_ in wich you want to code it (_BASH / ZSH_ ou _JS_)
 
 `$ mk-cmd`
 
