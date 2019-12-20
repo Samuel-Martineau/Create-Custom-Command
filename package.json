@@ -1,7 +1,7 @@
 {
   "name": "create-custom-command",
-  "version": "3.1.0",
-  "description": "A CLI to create CLI / Un CLI pour créer CLI",
+  "version": "3.1.1",
+  "description": "A CLI to create your own commands / Un CLI pour créer vos propres commandes",
   "author": "Samuel Martineau",
   "license": "ISC",
   "repository": {
