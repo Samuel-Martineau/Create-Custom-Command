@@ -1,7 +1,7 @@
 {
   "name": "create-custom-command",
-  "version": "3.0.0",
-  "description": "Un CLI pour créer CLI",
+  "version": "3.1.0",
+  "description": "A CLI to create CLI / Un CLI pour créer CLI",
   "author": "Samuel Martineau",
   "license": "ISC",
   "repository": {
@@ -26,5 +26,11 @@
   "homepage": "https://github.com/Samuel-Martineau/Create-Custom-Command#readme",
   "scripts": {
     "postinstall": "node ./postinstall.js"
-  }
+  },
+  "keywords": [
+    "CLI",
+    "generator",
+    "cli",
+    "create"
+  ]
 }
