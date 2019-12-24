@@ -94,5 +94,17 @@
   "by": {
     "fr": "par",
     "en": "by"
+  },
+  "commandsFolder": {
+    "fr": "Dans quel dossier voulez-vous sauvegarder vos commandes ?",
+    "en": "In wich folder do you want to save your commands ?"
+  },
+  "invalidPath": {
+    "fr": "Veuillez entrer un chemain valide",
+    "en": "Please enter a valid path"
+  },
+  "noCommandsDir": {
+    "fr": "Le dossier PATH n'existe pas. Veuillez exécuter config-cccmd et indiquer un dossier existant",
+    "en": "The directory PATH doesn't exist. Please execute config-cccmd and indicate an existing directory"
   }
 }

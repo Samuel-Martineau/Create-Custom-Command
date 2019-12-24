@@ -1,8 +1,10 @@
-#!/usr/bin/node
+#!/usr/bin/env node
+const { getMessage, getBin } = require("./helpers");
+const updateNotifier = require("update-notifier");
 const exec = require("child_process").execSync;
 const packageJson = require("./package.json");
-const { getMessage } = require("./helpers");
 const Configstore = require("configstore");
+const isFolder = require("is-directory");
 const inquirer = require("inquirer");
 const mkdirp = require("mkdirp");
 const fs = require("fs");
@@ -10,7 +12,13 @@ require("colors");
 
 const config = new Configstore(packageJson.name);
 
-if (!(config.has("language") || config.has("authorName"))) {
+if (
+  !(
+    config.has("language") ||
+    config.has("authorName") ||
+    config.has("commandsFolder")
+  )
+) {
   console.log(
     "Vous devez configurer ce paquet avant de l'utiliser. Exécutez ".red +
       "config-cccmd".white
@@ -32,6 +40,11 @@ console.log(getMessage("welcomeCreate").blue);
 main();
 
 async function main() {
+  if (!isFolder.sync(config.get("commandsFolder")))
+    return console.log(
+      getMessage("noCommandsDir").replace("PATH", config.get("commandsFolder"))
+        .red
+    );
   const {
     cmdName: name,
     cmdDesc: desc,
@@ -42,14 +55,21 @@ async function main() {
       name: "cmdName",
       message: getMessage("cmdName"),
       validate(val) {
+        let exists;
+        try {
+          fs.lstatSync(getBin() + val);
+          err = true;
+        } catch {}
         if (val === "") return getMessage("emptyCmdName");
         else if (val.includes(" ")) return getMessage("cmdNameWithSpace");
         else if (/[!@#$%^&*(),.?":{}|<>/]/.test(val))
           return getMessage("cmdNameWithSymbols");
         else if (
+          exists ||
           fs.existsSync("/usr/bin/" + val) ||
           fs.existsSync("/bin/" + val) ||
-          fs.existsSync("/home/" + user + "/custom-commands/" + val)
+          fs.existsSync(getBin() + val) ||
+          fs.existsSync(config.get("commandsFolder") + "/" + val)
         )
           return getMessage("cmdAlreadyExists");
         else return true;
@@ -80,26 +100,26 @@ async function main() {
       ]
     }
   ]);
-
+  const author = config.get("authorName");
   switch (lang) {
     case "js":
       console.log(getMessage("creatingCommand").green);
       try {
-        const indexJS = "#!/usr/bin/node\nrequire('colors');\n";
+        const indexJS = `#!${getBin()}node\nrequire('colors');\n`;
         const packageJSON = {
-          name: name,
+          name,
           version: "1.0.0",
           description: desc,
           main: "index.js",
           author,
           license: "ISC"
         };
-        const dirPath = `/home/${user}/custom-commands/${name}/`;
+        const dirPath = `${config.get("commandsFolder")}/${name}/`;
         mkdirp.sync(dirPath);
         fs.writeFileSync(dirPath + "index.js", indexJS);
         fs.writeFileSync(dirPath + "package.json", JSON.stringify(packageJSON));
         exec(
-          `cd ${dirPath} && npm install colors && chmod +x index.js && sudo ln -s ${dirPath}index.js /usr/bin/${name}`
+          `cd ${dirPath} && npm install colors && chmod +x index.js && sudo ln -s ${dirPath}/index.js ${getBin()}${name}`
         );
         console.log(getMessage("cmdCreated").replace("NAME", name).green);
       } catch {
@@ -109,18 +129,18 @@ async function main() {
     case "bash":
       console.log(getMessage("creatingCommand").green);
       try {
-        const dirPath = `/home/${user}/custom-commands/`;
+        const dirPath = config.get("commandsFolder");
         mkdirp.sync(dirPath);
         fs.writeFileSync(
-          dirPath + name,
-          `# ${cmd} (${desc}) ${getMessage("by")} ${author}`
+          dirPath + "/" + name,
+          `# ${name} (${desc}) ${getMessage("by")} ${author}`
         );
         exec(
-          `cd ${dirPath} && chmod +x ${name} && sudo ln -s ${dirPath}${name} /usr/bin/${name}`
+          `cd ${dirPath} && chmod +x ${name} && sudo ln -s ${dirPath}/${name} ${getBin()}${name}`
         );
         console.log(getMessage("cmdCreated").replace("NAME", name).green);
-      } catch {
-        console.log(getMessage("cmdError").red);
+      } catch (err) {
+        console.log(err, getMessage("cmdError").red);
       }
       break;
   }

@@ -1,10 +1,16 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 const updateNotifier = require("update-notifier");
+const exec = require("child_process").execSync;
 const packageJson = require("./package.json");
+const isValidPath = require("is-valid-path");
 const { getMessage } = require("./helpers");
 const Configstore = require("configstore");
 const inquirer = require("inquirer");
 require("colors");
+
+const user = exec("whoami")
+  .toString()
+  .trim();
 
 const config = new Configstore(packageJson.name);
 main();
@@ -49,10 +55,26 @@ function main() {
               if (!val) return getMessage("emptyAuthorName");
               return true;
             }
+          },
+          {
+            type: "path",
+            name: "commandsFolder",
+            message: getMessage("commandsFolder"),
+            default:
+              config.get("commandsFolder") ||
+              (process.platform === "darwin"
+                ? `/Users/${user}/Desktop/custom-commands`
+                : `/home/${user}/custom-commands`),
+            validate(val) {
+              return isValidPath(val) && /[!@#$%^&*(),.?":{}|<>/]/.test(val)
+                ? true
+                : getMessage("invalidPath");
+            }
           }
         ])
-        .then(({ authorName }) => {
+        .then(({ authorName, commandsFolder }) => {
           config.set("authorName", authorName);
+          config.set("commandsFolder", commandsFolder + "/");
           console.log(getMessage("configureSuccess").green);
         });
     });

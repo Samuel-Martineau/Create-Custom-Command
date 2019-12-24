@@ -1,15 +1,23 @@
-#!/usr/bin/node
+#!/usr/bin/env node
+const { getMessage, getBin } = require("./helpers");
+const updateNotifier = require("update-notifier");
 const exec = require("child_process").execSync;
 const packageJson = require("./package.json");
-const { getMessage } = require("./helpers");
 const Configstore = require("configstore");
+const isFolder = require("is-directory");
 const inquirer = require("inquirer");
 const fs = require("fs");
 require("colors");
 
 const config = new Configstore(packageJson.name);
 
-if (!(config.has("language") || config.has("authorName"))) {
+if (
+  !(
+    config.has("language") ||
+    config.has("authorName") ||
+    config.has("commandsFolder")
+  )
+) {
   console.log(
     "Vous devez configurer ce paquet avant de l'utiliser. Exécutez ".red +
       "config-cccmd".white
@@ -31,10 +39,15 @@ console.log(getMessage("welcomeRemove").blue);
 main();
 
 async function main() {
-  const dirPath = "/home/" + user + "/custom-commands/";
+  if (!isFolder.sync(config.get("commandsFolder")))
+    return console.log(
+      getMessage("noCommandsDir").replace("PATH", config.get("commandsFolder"))
+        .red
+    );
+  const dirPath = config.get("commandsFolder");
   let choices;
   try {
-    choices = fs.readdirSync(dirPath);
+    choices = fs.readdirSync(dirPath).filter(f => f !== ".DS_Store");
     if (choices.length === 0) throw new Error();
   } catch {
     console.log(getMessage("noExistingCommands").red);
@@ -54,7 +67,7 @@ async function main() {
     }
   ]);
   if (!confirm) return console.log(getMessage("deletionAborted").red);
-  exec(`rm -r ${dirPath}${cmd} && sudo rm /usr/bin/${cmd}`);
+  exec(`rm -r ${dirPath}/${cmd} && sudo rm ${getBin()}${cmd}`);
   console.log(getMessage("deletionCompleted").replace("NAME", cmd).green);
 
   const notifier = updateNotifier({

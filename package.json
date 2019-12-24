@@ -1,6 +1,6 @@
 {
   "name": "create-custom-command",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "A CLI to create your own commands / Un CLI pour créer vos propres commandes",
   "author": "Samuel Martineau",
   "license": "ISC",
@@ -12,6 +12,8 @@
     "colors": "^1.4.0",
     "configstore": "^5.0.0",
     "inquirer": "^7.0.1",
+    "is-directory": "^0.3.1",
+    "is-valid-path": "^0.1.1",
     "mkdirp": "^0.5.1",
     "update-notifier": "^4.0.0"
   },
