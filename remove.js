@@ -63,11 +63,12 @@ async function main() {
     {
       type: "confirm",
       name: "confirm",
-      message: getMessage("confirmDeletion")
+      message: getMessage("confirmDeletion"),
+      default: false
     }
   ]);
   if (!confirm) return console.log(getMessage("deletionAborted").red);
-  exec(`rm -r ${dirPath}/${cmd} && sudo rm ${getBin()}${cmd}`);
+  exec(`rm -r ${dirPath}${cmd} && sudo rm ${getBin()}${cmd}`);
   console.log(getMessage("deletionCompleted").replace("NAME", cmd).green);
 
   const notifier = updateNotifier({

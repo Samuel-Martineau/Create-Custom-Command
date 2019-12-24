@@ -6,6 +6,7 @@ const isValidPath = require("is-valid-path");
 const { getMessage } = require("./helpers");
 const Configstore = require("configstore");
 const inquirer = require("inquirer");
+const mkdirp = require("mkdirp");
 require("colors");
 
 const user = exec("whoami")
@@ -70,11 +71,26 @@ function main() {
                 ? true
                 : getMessage("invalidPath");
             }
+          },
+          {
+            type: "confirm",
+            name: "autoCreateF",
+            message: getMessage("autoCreateF"),
+            default: true
           }
         ])
-        .then(({ authorName, commandsFolder }) => {
+        .then(({ authorName, commandsFolder, autoCreateF }) => {
           config.set("authorName", authorName);
-          config.set("commandsFolder", commandsFolder + "/");
+          config.set(
+            "commandsFolder",
+            "/" +
+              commandsFolder
+                .split("/")
+                .filter(s => s)
+                .join("/") +
+              "/"
+          );
+          if (autoCreateF) mkdirp(commandsFolder);
           console.log(getMessage("configureSuccess").green);
         });
     });

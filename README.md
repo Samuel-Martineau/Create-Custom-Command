@@ -3,7 +3,7 @@
 **Please note that I am not a native english speaker. Please make a GitHub issue if you see any grammar / spelling mistake. Most translations are done by _Google Translate_.**
 
 > **A CLI to create your own commands**  
-> Important: _This CLI has only been tested on Ubuntu 18.04 (LTS) with ZSH_
+> Important: _This CLI has only been tested on Ubuntu 18.04 (LTS) with ZSH and MacOS Catalina with ZSH_
 
 ## Installation
 
@@ -13,7 +13,9 @@
 
 > The programm will prompt you for your _name_ et your prefered language (_English_ / _French_)
 
-`config-cccmd`
+`$ config-cccmd`
+
+> To reset the configuration, use **`$ reset-cccmd`**
 
 ## Utilisation
 
@@ -30,7 +32,7 @@
 # Create-Custom-Command (FR)
 
 > **Un CLI pour créer vos propres commandes**  
-> Important: _Ce CLI n'a été testé que sur Ubuntu 18.04 (LTS) avec ZSH_
+> Important: _Ce CLI n'a été testé que sur Ubuntu 18.04 (LTS) avec ZSH et MacOS Catalina avec ZSH_
 
 ## Installation
 
@@ -41,6 +43,8 @@
 > Le programme va vous demander votre _nom_ et la _langue_ que vous préférez (_Français_ / _Anglais_)
 
 `$ config-cccmd`
+
+> To reset the configuration, use **`$ reset-cccmd`**
 
 ## Utilisation
 

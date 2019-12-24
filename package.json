@@ -1,6 +1,6 @@
 {
   "name": "create-custom-command",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "A CLI to create your own commands / Un CLI pour créer vos propres commandes",
   "author": "Samuel Martineau",
   "license": "ISC",
@@ -20,14 +20,16 @@
   "bin": {
     "mk-cmd": "./create.js",
     "rm-cmd": "./remove.js",
-    "config-cccmd": "./configure.js"
+    "config-cccmd": "./configure.js",
+    "reset-cccmd": "./reset.js"
   },
   "bugs": {
     "url": "https://github.com/Samuel-Martineau/Create-Custom-Command/issues"
   },
   "homepage": "https://github.com/Samuel-Martineau/Create-Custom-Command#readme",
   "scripts": {
-    "postinstall": "node ./postinstall.js"
+    "postinstall": "node ./postinstall.js",
+    "postuninstall": "node ./postuninstall.js"
   },
   "keywords": [
     "CLI",

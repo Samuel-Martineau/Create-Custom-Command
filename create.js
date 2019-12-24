@@ -69,7 +69,7 @@ async function main() {
           fs.existsSync("/usr/bin/" + val) ||
           fs.existsSync("/bin/" + val) ||
           fs.existsSync(getBin() + val) ||
-          fs.existsSync(config.get("commandsFolder") + "/" + val)
+          fs.existsSync(config.get("commandsFolder") + val)
         )
           return getMessage("cmdAlreadyExists");
         else return true;
@@ -114,12 +114,12 @@ async function main() {
           author,
           license: "ISC"
         };
-        const dirPath = `${config.get("commandsFolder")}/${name}/`;
+        const dirPath = `${config.get("commandsFolder")}${name}/`;
         mkdirp.sync(dirPath);
         fs.writeFileSync(dirPath + "index.js", indexJS);
         fs.writeFileSync(dirPath + "package.json", JSON.stringify(packageJSON));
         exec(
-          `cd ${dirPath} && npm install colors && chmod +x index.js && sudo ln -s ${dirPath}/index.js ${getBin()}${name}`
+          `cd ${dirPath} && npm install colors && chmod +x index.js && sudo ln -s ${dirPath}index.js ${getBin()}${name}`
         );
         console.log(getMessage("cmdCreated").replace("NAME", name).green);
       } catch {
@@ -132,11 +132,11 @@ async function main() {
         const dirPath = config.get("commandsFolder");
         mkdirp.sync(dirPath);
         fs.writeFileSync(
-          dirPath + "/" + name,
+          dirPath + name,
           `# ${name} (${desc}) ${getMessage("by")} ${author}`
         );
         exec(
-          `cd ${dirPath} && chmod +x ${name} && sudo ln -s ${dirPath}/${name} ${getBin()}${name}`
+          `cd ${dirPath} && chmod +x ${name} && sudo ln -s ${dirPath}${name} ${getBin()}${name}`
         );
         console.log(getMessage("cmdCreated").replace("NAME", name).green);
       } catch (err) {

@@ -36,7 +36,7 @@
     "en": "Are-you sure you want delete this command ?"
   },
   "deletionAborted": {
-    "fr": "Vous avez aborté la suppression",
+    "fr": "Vous avez aborté la suppression de la commande",
     "en": "You aborted the command deletion"
   },
   "deletionCompleted": {
@@ -106,5 +106,25 @@
   "noCommandsDir": {
     "fr": "Le dossier PATH n'existe pas. Veuillez exécuter config-cccmd et indiquer un dossier existant",
     "en": "The directory PATH doesn't exist. Please execute config-cccmd and indicate an existing directory"
+  },
+  "autoCreateF": {
+    "fr": "Voulez-vous créer ce dossier automatiquement ?",
+    "en": "Do you want to create this directory automatically ?"
+  },
+  "welcomeReset": {
+    "fr": "Bienvenue dans l'interface de suppresion de la configuration de Create-Custom-Command",
+    "en": "Welcome in the configuration suppresion interface of Create-Custom-Command"
+  },
+  "confirmConfigurationDeletion": {
+    "fr": "Voulez-vous vraiment supprimer la configuration de Create-Custom-Command ?",
+    "en": "Do you really want to delete the configuration of Create-Custom-Command ?"
+  },
+  "configurationDeletionAborted": {
+    "fr": "Vous avez aborté la suppression de la configuration",
+    "en": "You aborted the configuration deletion"
+  },
+  "configurationDeletionCompleted": {
+    "fr": "La configuration a été supprimée avec succès",
+    "en": "The configuration has been deleted"
   }
 }
