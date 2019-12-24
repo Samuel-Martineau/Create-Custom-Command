@@ -44,7 +44,7 @@
 
 `$ config-cccmd`
 
-> To reset the configuration, use **`$ reset-cccmd`**
+> Pour effacer la configuration de ce paquet, exécutez **`$ reset-cccmd`**
 
 ## Utilisation
 
