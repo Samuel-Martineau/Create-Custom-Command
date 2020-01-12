@@ -29,7 +29,7 @@
   "homepage": "https://github.com/Samuel-Martineau/Create-Custom-Command#readme",
   "scripts": {
     "postinstall": "node ./postinstall.js",
-    "postuninstall": "node ./postuninstall.js"
+    "preuninstall": "node ./preuninstall.js"
   },
   "keywords": [
     "CLI",
