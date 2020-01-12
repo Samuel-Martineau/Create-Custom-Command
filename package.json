@@ -1,6 +1,6 @@
 {
   "name": "create-custom-command",
-  "version": "3.3.1",
+  "version": "3.3.2",
   "description": "A CLI to create your own commands / Un CLI pour créer vos propres commandes",
   "author": "Samuel Martineau",
   "license": "ISC",
@@ -28,8 +28,7 @@
   },
   "homepage": "https://github.com/Samuel-Martineau/Create-Custom-Command#readme",
   "scripts": {
-    "postinstall": "node ./postinstall.js",
-    "preuninstall": "node ./preuninstall.js"
+    "postinstall": "node ./postinstall.js"
   },
   "keywords": [
     "CLI",
