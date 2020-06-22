@@ -7,7 +7,7 @@
 
 ## Installation
 
-`$ sudo npm i -g create-custom-command`
+`$ npm i -g create-custom-command`
 
 ## Configuration
 
@@ -36,7 +36,7 @@
 
 ## Installation
 
-`$ sudo npm i -g create-custom-command`
+`$ npm i -g create-custom-command`
 
 ## Configuration
 
