@@ -17,7 +17,7 @@
 
 > To reset the configuration, use **`$ reset-cccmd`**
 
-## Utilisation
+## Usage
 
 > **To create a command**  
 > The program will prompt you for the command's _name_, it's _description_ and the programming _language_ in wich you want to code it (_BASH / ZSH_ ou _JS_)
