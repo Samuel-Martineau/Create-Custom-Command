@@ -1,4 +1,4 @@
-# Create-Custom-Command (EN)
+# Create-Custom-Command
 
 <p float="left" align="middle">
   <img width="32%" alt="demo-configure.gif" src="https://raw.githubusercontent.com/Samuel-Martineau/create-custom-command/master/gifs/demo-configure.gif" />
@@ -6,16 +6,18 @@
   <img width="32%" alt="demo-delete-cmd.gif" src="https://raw.githubusercontent.com/Samuel-Martineau/create-custom-command/master/gifs/demo-delete-cmd.gif" />
 </p>
 
+## Create-Custom-Command (EN)
+
 **Please note that I am not a native english speaker. Please make a GitHub issue if you see any grammar / spelling mistake. Most translations are done by _Google Translate_.**
 
 > **A CLI to create your own commands**  
 > Important: _This CLI has only been tested on Ubuntu 18.04 (LTS) with ZSH and MacOS Catalina with ZSH_
 
-## Installation
+### Installation
 
 `$ npm i -g create-custom-command`
 
-## Configuration
+### Configuration
 
 > The program will prompt you for your _name_ et your prefered language (_English_ / _French_)
 
@@ -23,7 +25,7 @@
 
 > To reset the configuration, use **`$ reset-cccmd`**
 
-## Usage
+### Usage
 
 > **To create a command**  
 > The program will prompt you for the command's _name_, it's _description_ and the programming _language_ in wich you want to code it (_BASH / ZSH_ ou _JS_)
@@ -35,16 +37,16 @@
 
 `$ rm-cmd`
 
-# Create-Custom-Command (FR)
+## Create-Custom-Command (FR)
 
 > **Un CLI pour créer vos propres commandes**  
 > Important: _Ce CLI n'a été testé que sur Ubuntu 18.04 (LTS) avec ZSH et MacOS Catalina avec ZSH_
 
-## Installation
+### Installation
 
 `$ npm i -g create-custom-command`
 
-## Configuration
+### Configuration
 
 > Le programme va vous demander votre _nom_ et la _langue_ que vous préférez (_Français_ / _Anglais_)
 
@@ -52,7 +54,7 @@
 
 > Pour effacer la configuration de ce paquet, exécutez **`$ reset-cccmd`**
 
-## Utilisation
+### Utilisation
 
 > **Pour créer une commande**  
 > Le programme va vous demander le _nom_ de la commande, sa _description_ et le _language_ de programmation dans lequel vous voulez la codé (_BASH / ZSH_ ou _JS_)
