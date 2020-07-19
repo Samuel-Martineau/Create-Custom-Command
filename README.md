@@ -1,5 +1,11 @@
 # Create-Custom-Command (EN)
 
+<p float="left" align="middle">
+  <img width="32%" alt="demo-configure.gif" src="https://raw.githubusercontent.com/Samuel-Martineau/create-custom-command/master/gifs/demo-configure.gif" />
+  <img width="32%" alt="demo-create-cmd.gif" src="https://raw.githubusercontent.com/Samuel-Martineau/create-custom-command/master/gifs/demo-create-cmd.gif" />
+  <img width="32%" alt="demo-delete-cmd.gif" src="https://raw.githubusercontent.com/Samuel-Martineau/create-custom-command/master/gifs/demo-delete-cmd.gif" />
+</p>
+
 **Please note that I am not a native english speaker. Please make a GitHub issue if you see any grammar / spelling mistake. Most translations are done by _Google Translate_.**
 
 > **A CLI to create your own commands**  
