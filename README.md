@@ -1,5 +1,7 @@
 # Create-Custom-Command
 
+[![NPM version](https://badge.fury.io/js/create-custom-command.svg)](https://npmjs.org/package/create-custom-command) [![NPM downloads](https://img.shields.io/npm/dt/create-custom-command?label=npm%20downloads)](https://npmjs.org/package/create-custom-command) [![Build](https://github.com/Samuel-Martineau/RM-Comments-CLI/workflows/CI/badge.svg)](https://github.com/Samuel-Martineau/create-custom-command/actions?query=workflow%3ACI)
+
 <p float="left" align="middle">
   <img width="32%" alt="demo-configure.gif" src="https://raw.githubusercontent.com/Samuel-Martineau/create-custom-command/master/gifs/demo-configure.gif" />
   <img width="32%" alt="demo-create-cmd.gif" src="https://raw.githubusercontent.com/Samuel-Martineau/create-custom-command/master/gifs/demo-create-cmd.gif" />
