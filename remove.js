@@ -57,7 +57,7 @@ async function main() {
     {
       type: "list",
       name: "cmdToDelete",
-      message: getMessage("wichCommandToDelete"),
+      message: getMessage("whichCommandToDelete"),
       choices
     },
     {

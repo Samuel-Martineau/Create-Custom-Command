@@ -30,7 +30,7 @@
 ### Usage
 
 > **To create a command**  
-> The program will prompt you for the command's _name_, it's _description_ and the programming _language_ in wich you want to code it (_BASH / ZSH_ ou _JS_)
+> The program will prompt you for the command's _name_, it's _description_ and the programming _language_ in which you want to code it (_BASH / ZSH_ ou _JS_)
 
 `$ mk-cmd`
 
