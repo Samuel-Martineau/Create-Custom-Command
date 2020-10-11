@@ -29,7 +29,7 @@ function main() {
         type: "list",
         name: "language",
         message:
-          "Dans quelle langue voulez-vous utiliser ce CLI ? In wich language do you want to use this CLI ?",
+          "Dans quelle langue voulez-vous utiliser ce CLI ? In which language do you want to use this CLI ?",
         choices: [
           {
             name: "Français",

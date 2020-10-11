@@ -21,19 +21,19 @@
   },
   "welcomeRemove": {
     "fr": "Bienvenue dans l'interface de suppresion de commandes",
-    "en": "Welcome in the command deletion interface"
+    "en": "Welcome to the command deletion interface"
   },
   "noExistingCommands": {
     "fr": "Vous n'avez créé aucune commande",
     "en": "There are no commands created"
   },
-  "wichCommandToDelete": {
+  "whichCommandToDelete": {
     "fr": "Quelle commande voulez-vous spprimer ?",
-    "en": "Wich command do you want to delete ?"
+    "en": "Which command do you want to delete ?"
   },
   "confirmDeletion": {
     "fr": "Êtes-vous sûr de vouloir supprimer cette commande ?",
-    "en": "Are-you sure you want delete this command ?"
+    "en": "Are you sure you want delete this command ?"
   },
   "deletionAborted": {
     "fr": "Vous avez aborté la suppression de la commande",
@@ -77,7 +77,7 @@
   },
   "cmdLanguage": {
     "fr": "Dans quel language voulez-vous coder votre commande ?",
-    "en": "In wich language do you want to code your command ?"
+    "en": "In which language do you want to code your command ?"
   },
   "creatingCommand": {
     "fr": "Création de la commande...",
@@ -97,7 +97,7 @@
   },
   "commandsFolder": {
     "fr": "Dans quel dossier voulez-vous sauvegarder vos commandes ?",
-    "en": "In wich folder do you want to save your commands ?"
+    "en": "In which folder do you want to save your commands ?"
   },
   "invalidPath": {
     "fr": "Veuillez entrer un chemain valide",
